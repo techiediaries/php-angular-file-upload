@@ -1,23 +1,15 @@
-<h1>Upload your Avatar!</h1>
+<h1>PHP with Angular 7 File Upload Example</h1>
 <div>
-  <div *ngIf="error">
-    {{ error.message }}
-  </div>
-  <div *ngIf="uploadResponse.status === 'error'">
+  <div *ngIf="uploadResponse && uploadResponse.status === 'error'">
     {{ uploadResponse.message }}
   </div>
-  <div *ngIf="uploadResponse.status === 'progress'">
-
-
-    <div role="progressbar" [style.width.%]="uploadResponse.message" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-      {{uploadResponse.message}}%
-    </div>
-
+  <div *ngIf="uploadResponse && uploadResponse.status === 'success'">
+    <img [src]='uploadResponse.url' />
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <input type="file" name="avatar" (change)="onFileChange($event)" />
+    <input type="file" name="avatar" (change)="onFileSelect($event)" />
     <button type="submit">Upload</button>
 
   </form>

@@ -10,9 +10,7 @@ import { UploadService } from '../upload.service';
 export class ProfileComponent implements OnInit {
 
   form: FormGroup;
-  error: string;
-  userId: number = 1;
-  uploadResponse = { status: '', message: '', filePath: '' };
+  uploadResponse;
 
   constructor(private formBuilder: FormBuilder, private uploadService: UploadService) { }
 
@@ -22,7 +20,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onFileChange(event) {
+  onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('avatar').setValue(file);
@@ -31,16 +29,15 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     const formData = new FormData();
-    formData.append('file', this.form.get('avatar').value);
+    formData.append('avatar', this.form.get('avatar').value);
 
-    this.uploadService.upload(formData, this.userId).subscribe(
+    this.uploadService.uploadFile(formData).subscribe(
       (res) => {
         this.uploadResponse = res;
           console.log(res);
       },
-      (err) => { 
-        this.error = err 
-        console.log(this.error);
+      (err) => {  
+        console.log(err);
       }
     );
   }

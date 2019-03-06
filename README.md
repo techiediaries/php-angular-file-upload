@@ -1,4 +1,11 @@
-# Frontend
+# Angular 7 and PHP File Upload Example
+
+
+In this tutorial, you'll learn how you can upload files in your PHP web application. We'll not use any framework but plain PHP.
+
+Next, we'll see how we can use Angular 7 to create a frontend that provides a form for uploading an image file to the backend using `FormData` and `HttpClient`. We'll be also looking at how to create a reactive form with Angular.
+
+[PHP Image/File Upload Tutorial and Example [FormData and Angular 7 Front-End]](https://www.techiediaries.com/php-file-upload-tutorial)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
